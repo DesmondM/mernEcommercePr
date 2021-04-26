@@ -2,8 +2,18 @@ const express = require('express');
 const env = require('dotenv');
 const app = express();
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 
 env.config({path:'../.env' });
+
+// mongo connection
+//mongodb+srv://dbDes:<password>@cluster0.zklft.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
+mongoose.connect(
+    'mongodb://localhost:27017/test',
+    {
+        useNewUrlParser: true, useUnifiedTopology:true
+    }
+);
 
 app.use(bodyParser());
 
