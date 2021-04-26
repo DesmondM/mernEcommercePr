@@ -8,12 +8,14 @@ env.config({path:'../.env' });
 
 // mongo connection
 //mongodb+srv://dbDes:<password>@cluster0.zklft.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
-mongoose.connect(
-    'mongodb://localhost:27017/test',
-    {
-        useNewUrlParser: true, useUnifiedTopology:true
-    }
-);
+
+mongoose.connect(`mongodb+srv://${process.env.MONGO_DB_USER}:${process.env.MONGO_DB_PASSWORD}@cluster0.zklft.mongodb.net/${process.env.MONGO_DB_DATABASE}?retryWrites=true&w=majority`, 
+{
+    useNewUrlParser: true, useUnifiedTopology: true
+}).then(()=>{
+    console.log("The Mongo DB is conected");
+});
+
 
 app.use(bodyParser());
 
