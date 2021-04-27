@@ -8,14 +8,14 @@ const userSchema = new mongoose.Schema({
         required: true,
         trim: true,
         min: 3,
-        max:20
+        max: 20
     },
     lastName: {
         type: String,
         required: true,
         trim: true,
         min: 3,
-        max:20
+        max: 20
     },
     username: {
         type: String,
@@ -39,7 +39,7 @@ const userSchema = new mongoose.Schema({
     role: {
         type: String,
         enum: ['user', 'admin'],
-        default: 'admin'
+        default: 'user'
     },
     contactNumber: {
         type: String
@@ -55,9 +55,9 @@ userSchema.virtual('password')
 });
 
 userSchema.methods = {
-    authenticate: function(password{
+    authenticate: function(password){
         return bcrypt.compare(password, this.hash_password);
-    })
+    }
 }
 
 module.exports = mongoose.model('User', userSchema);
