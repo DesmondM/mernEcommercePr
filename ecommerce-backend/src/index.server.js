@@ -1,12 +1,12 @@
 const express = require('express');
 const env = require('dotenv');
 const app = express();
-const bodyParser = require('body-parser');
+
 const mongoose = require('mongoose');
 
 //routes
 const userRoutes = require('./routes/user');
-
+const bodyParser = require('body-parser');
 env.config({path:'../.env' });
 
 // mongo connection
